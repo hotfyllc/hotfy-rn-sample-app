@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { DebugConsole } from '@hotfyllc/debug-console-rn'
-import { Hotfy, startAdPreload } from '@hotfyllc/sdk'
+import { Hotfy, loadAndShowBootAd, startAdPreload } from '@hotfyllc/sdk'
 import { Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { useEffect } from 'react'
@@ -69,6 +69,17 @@ function useHotfySdk() {
 
           // Pre-warm the interstitial pool. Safe to call after init.
           startAdPreload()
+
+          // Cold-start App Open ad — shows the boot ad on app launch when an
+          // app_open ad unit is configured in the wrapper config. Resolves
+          // without throwing if there's no fill, ads are disabled in the
+          // current segment, or no unit is configured.
+          //
+          // The SDK's foreground handler (started by `Hotfy.init` when the
+          // wrapper config has `app_open_on_foreground: true`) calls this
+          // same function automatically when the app returns from background
+          // after >30s — no extra code needed here for that case.
+          loadAndShowBootAd()
         } catch (err) {
           if (__DEV__) console.warn('[Hotfy] init failed — running without SDK', err)
         }
