@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "RN Sample App",
+    "slug": "hotfy-rn-sample-app",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "hotfysample",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#10b981"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.hotfy.samplern"
+    },
+    "android": {
+      "package": "com.hotfy.samplern",
+      "adaptiveIcon": {
+        "backgroundColor": "#10b981"
+      }
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-3940256099942544~3347511713",
+          "iosAppId": "ca-app-pub-3940256099942544~1458002511"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
